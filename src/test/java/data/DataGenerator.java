@@ -1,11 +1,7 @@
 package data;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.Faker;
-import com.github.javafaker.PhoneNumber;
 import lombok.Value;
-import lombok.val;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -32,8 +28,7 @@ public class DataGenerator {
 
     public static String generatePhone(String locale) {
         var faker = new Faker(new Locale(locale));
-        String phone = String.valueOf(faker.phoneNumber());
-        return phone;
+        return faker.phoneNumber().phoneNumber();
     }
 
     public static class Registration {
@@ -41,11 +36,7 @@ public class DataGenerator {
         }
 
         public static UserInfo generateUser(String locale) {
-            UserInfo user;
-            user = new UserInfo(
-            generateСity(locale));
-            generateName(locale);
-            generatePhone(locale)
+            return new UserInfo(generateCity(locale), generateName(locale), generatePhone(locale));
         }
     }
 
